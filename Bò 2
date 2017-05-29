@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+
+int main(){
+    freopen("in.txt","r",stdin);
+    float n,s;
+    float vb, vx;
+    cin >> n >>s;
+    cin >> vb >> vx;
+    float res = 0;
+    int k = 2;
+    while (k){
+        float x = (s*vb*vx+s*vx*vx)/(s*vb*vx+vx*vx-vb*vb);
+        cout << "x = " << x << endl;
+        res+=(x/vx)+((s-x)/vb);
+        s = s - ((s-x)/vb) - ((x*vb)/vx);
+        cout << s <<" "<< x << endl;
+        n-=4;
+        cout << s << endl;
+        if (n<=4){
+            res+=s/vx;
+            break;
+        }
+    }
+    cout<< res;
+	return 0;
+}
